@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{193D7B8A-C6AA-D343-2B20-C11FEA9D42D8}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Uniducial/TUIOConnector/TuioClient.cs">
+    <Files>
+      <File FileName="Assets/scripts/3rd Party/OSCHandler.cs" Line="236" Column="1" />
+      <File FileName="Assets/iTween/ReadMe!/ReadMe!.txt" Line="3" Column="61" />
+      <File FileName="Assets/iTween/Sample/SampleInfo.cs" Line="11" Column="25" />
+      <File FileName="Assets/scripts/OSC_Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets/OSC/OSCClient.cs" Line="108" Column="1" />
+      <File FileName="Assets/Uniducial/TuioManager.cs" Line="28" Column="44" />
+      <File FileName="Assets/Uniducial/FiducialController.cs" Line="111" Column="16" />
+      <File FileName="Assets/Uniducial/TUIOConnector/TuioClient.cs" Line="47" Column="22" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

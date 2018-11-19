@@ -1,0 +1,6 @@
+ReactivisionUnityProject/Temp
+ReactivisionUnityProject/obj
+ReactivisionUnityProject/library
+*.csproj
+*.unityproj
+*.sln
