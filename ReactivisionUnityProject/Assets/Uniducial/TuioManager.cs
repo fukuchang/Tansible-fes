@@ -168,7 +168,7 @@ namespace UniducialLibrary
                 int port = m_Client.getPort();
                 m_Client.removeTuioListener(this);
                 m_Client.disconnect();
-                Debug.Log("Stopped listening to TUIO port " + port + ".");
+                //Debug.Log("Stopped listening to TUIO port " + port + ".");
             }
         }
 

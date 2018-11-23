@@ -60,6 +60,12 @@ public class FiducialController : MonoBehaviour
     private bool m_IsVisible;
 
     public float RotationMultiplier = 1;
+    public bool isConectted = false;
+
+    public UniducialLibrary.TuioManager TuioManager{
+        get { return m_TuioManager; }
+    }
+                           
 
     void Awake()
     {
@@ -109,7 +115,7 @@ public class FiducialController : MonoBehaviour
             && this.m_TuioManager.IsMarkerAlive(this.MarkerID))
         {
             TUIO.TuioObject marker = this.m_TuioManager.GetMarker(this.MarkerID);
-
+            isConectted = true;
             //update parameters
             this.m_ScreenPosition.x = marker.getX();
             this.m_ScreenPosition.y = marker.getY();
@@ -131,6 +137,7 @@ public class FiducialController : MonoBehaviour
         }
         else
         {
+            isConectted = false;
             //automatically hide game object when marker is not visible
             if (this.AutoHideGO)
             {

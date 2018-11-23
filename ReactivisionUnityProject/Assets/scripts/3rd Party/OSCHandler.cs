@@ -93,7 +93,7 @@ public class OSCHandler : MonoBehaviour
 	{
 		//Initialize OSC clients (transmitters)
 		//Example:		
-        CreateClient("HolodeckClient", IPAddress.Parse("172.31.131.102"), 3333);
+        CreateClient("HolodeckClient", IPAddress.Parse("172.31.129.27"), 3333);
 		
 		//Initialize OSC servers (listeners)
 		//Example:
