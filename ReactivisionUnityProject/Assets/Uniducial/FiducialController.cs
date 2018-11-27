@@ -154,8 +154,6 @@ public class FiducialController : MonoBehaviour
 
 			UpdateTransform();
 
-
-
 		}
 
 

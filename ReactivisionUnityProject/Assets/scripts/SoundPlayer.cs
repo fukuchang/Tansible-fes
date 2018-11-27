@@ -16,18 +16,23 @@ public class SoundPlayer : MonoBehaviour {
 
     [SerializeField] private GameObject _soundManager;
     AudioSource _audioSource;
-    [SerializeField]private GameObject _tuio;
-    private FiducialController _fc;
+    [SerializeField] private GameObject[] _tuio = new GameObject[3];
+    private FiducialController[] _fc = new FiducialController[3];
+    private int id = 0;
 
     void Start () {
         Part _part = new Part();
         _audioSource = this.GetComponent<AudioSource>();
-        _fc = _tuio.GetComponent<FiducialController>();
+        for (int i = 0; i < 3; i++)
+        {
+            _fc[i] = _tuio[i].GetComponent<FiducialController>();
+        }
+        Debug.Log(_audioSource.clip.length + "sec");
         StartCoroutine("Sample");
     }
 	
     void Update () {
-        Debug.Log(_fc.isConectted);
+
     }
 
     private IEnumerator Sample()
@@ -35,42 +40,58 @@ public class SoundPlayer : MonoBehaviour {
 
         while (true)
         {
+            FiducialController _buffer = _fc[0];
+            Debug.Log("Check-------------");
+            for (int i = 0; i < 3; i++)
+            {
+                Debug.Log(i + "bool : " + _fc[i].isConectted);
+                if (_fc[i].isConectted == true)
+                {
+                    id = _fc[i].MarkerID;
+                    _buffer = _fc[i];
+                    Debug.Log("isConnected" + _fc[i].MarkerID);
+                    break;
+                }
+            }
+
             _audioSource = this.GetComponent<AudioSource>();
             switch (this.gameObject.name)
             {
 
                 case "Bass":
-                    var id = (int)Part.Bass * 3 + Random.Range(0, 3);
-                    //id = (_fc.MarkerID + 1) + (int)Part.Bass * 3;
+                    //var id = (int)Part.Bass * 3 + Random.Range(0, 3);
+                    id = (id) + 0 * 3;
                     //map to -> 0~2
 
-                    _audioSource.clip = _soundManager.GetComponent<MusicManager>().audioClips[id];
+                    //_audioSource.clip = _soundManager.GetComponent<MusicManager>().audioClips[id];
                     break;
 
                 case "Chord":
-                    id = (int)Part.Chord * 3 + Random.Range(0, 3);
-                    //id = (_fc.MarkerID % 12 + 1) + (int)Part.Chord;
+                    //id = (int)Part.Chord * 3 + Random.Range(0, 3);
+                    id = (id % 12) + 1 * 3;
                     //map to -> 0~2
-                    _audioSource.clip = _soundManager.GetComponent<MusicManager>().audioClips[id];
+                    //_audioSource.clip = _soundManager.GetComponent<MusicManager>().audioClips[id];
                     break;
 
                 case "Drum":
-                    id = (int)Part.Drum * 3 + Random.Range(0, 3);
-                    //id = (_fc.MarkerID % 24 + 1) + (int)Part.Drum * 3;
+                    //id = (int)Part.Drum * 3 + Random.Range(0, 3);
+                    id = (id % 24) + 2* 3;
                     //map to -> 0~2
-                    _audioSource.clip = _soundManager.GetComponent<MusicManager>().audioClips[id];
+                    //_audioSource.clip = _soundManager.GetComponent<MusicManager>().audioClips[id];
                     break;
 
                 case "Melody":
-                    id = (int)Part.Melody * 3 + Random.Range(0, 2);
-                    //id = (_fc.MarkerID % 36 +) 1 + (int)Part.Melody * 3;
+                    //id = (int)Part.Melody * 3 + Random.Range(0, 2);
+                    id = (id % 36) + 3 * 3;
                     //map to -> 0~2
-                    _audioSource.clip = _soundManager.GetComponent<MusicManager>().audioClips[id];
+                    //_audioSource.clip = _soundManager.GetComponent<MusicManager>().audioClips[id];
                     break;
             }
 
-            if (_fc.isConectted)
+            if (_buffer.isConectted)
             {
+                Debug.Log("currentID" + id);
+                _audioSource.clip = _soundManager.GetComponent<MusicManager>().audioClips[id];
                 _audioSource.Play();
             }
 
